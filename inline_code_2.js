@@ -29,7 +29,8 @@ function useMarkUpText(text) {
         return text.replace(/\•/g, '*');
         break;
       case 'MiddleDot':
-        return text.replace(/\°/g, '•');
+        // This regex looks for '*' followed by a letter character (a-zA-Z) at the beginning of a word (\b)
+        return text.replace(/\b\*(?=[a-zA-Z])/g, '•');
         break;
       case 'Italicize':
         return text.replace(/_(.*?)_/gis, '<i>$1</i>');
