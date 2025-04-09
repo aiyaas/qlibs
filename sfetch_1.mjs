@@ -21,7 +21,10 @@ async function fetchWebApi(endpoint, { method = 'GET', headers = {}, body = null
       },
       method,
       body:body ? JSON.stringify(body) : null, // Serialize body if provided
+      signal: new AbortController().signal, // This improves control over your fetch() and helps prevent
     });
+    console.log(res.status); 
+    
     // Parse JSON response 
     return await res.json();
   } catch (e) {
